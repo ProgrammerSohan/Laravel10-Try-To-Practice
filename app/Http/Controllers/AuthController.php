@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -23,6 +24,26 @@ class AuthController extends Controller
 
             return back()->with('success','Register Successfully');
 
+        }
+
+        public function login()
+        {
+            return view('login');
+        }
+
+        public function loginPost(Request $request)
+        {
+            $credentials = [
+                'email' => $request->email,
+                'password' => $request->password,
+
+            ];
+
+            if(Auth::attempt($credentials)){
+                return redirect('/home')->with('success','Login Ok');
+            }
+
+            return back()->with('error','Email Or Password Incorrect');
         }
 
 }
