@@ -1,13 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home Page</title>
-</head>
-<body>
-    <h2>Welcome to home page</h2>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-</body>
+        <title>Home Page</title>
+
+
+
+        <!-- Styles -->
+
+    </head>
+    <body>
+        <div class="logreg">
+            @if (Route::has('login'))
+                <div >
+                    @auth
+                        <a href="{{ url('/dashboard') }}"">Dashboard</a>
+                    @else
+                        <a href="{{ route('login') }}">Log in</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" >Register</a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
+
+        </div>
+
+
+    </body>
 </html>

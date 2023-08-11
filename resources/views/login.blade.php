@@ -8,6 +8,7 @@
 </head>
 <body>
     <h2>Login Form</h2>
+    <i> <a href="{{ url('/') }}">Go to home page</a></i>
     @if(Session::has('error'))
     <h4>{{Session::get('error')}}</h4>
     @endif
@@ -20,6 +21,7 @@
         <label for="password">Password</label><br>
         <input type="password" name="password" id="password" required><br><br>
         <button>Login</button>
+        <p>If you have no account! You can register by clicking here,    <a  style="font-size:20px;" href="{{ route('register') }}">Register</a></p>
 
     </form>
 
