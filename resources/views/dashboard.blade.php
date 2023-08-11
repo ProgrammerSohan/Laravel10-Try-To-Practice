@@ -8,6 +8,10 @@
 </head>
 <body>
     <h2>Welcome to home page</h2>
+    <i> <a href="{{ url('/') }}">Go to home page</a></i>
+    @if(Session::has('success'))
+        <h5>{{ Session::get('success')}}</h5>
+    @endif
    <div style="float:right; background-color:red;">
    <form action="{{route('logout')}}" method="POST">
     @csrf
