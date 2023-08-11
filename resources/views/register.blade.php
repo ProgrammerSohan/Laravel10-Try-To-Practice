@@ -9,7 +9,11 @@
 <body>
 
     <h2>Register Form</h2>
-    <form action="">
+    @if(Session::has('success'))
+        <h5>{{ Session::get('success')}}</h5>
+    @endif
+    <form action="{{route('register')}}" method="POST">
+        @csrf
         <label for="name">Name</label><br>
         <input type="text" name="name" id="name" placeholder="Sohan Sujan" required><br>
         <label for="email">Email</label><br>
